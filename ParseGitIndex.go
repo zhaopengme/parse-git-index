@@ -26,7 +26,6 @@ type Entry struct {
 	FilePath string `json:"filePath"`
 }
 
-
 type header struct {
 	Signature [4]byte
 	Version   uint32
@@ -73,7 +72,6 @@ func convertToEntry(entry entry, filePath string) Entry {
 	return en
 }
 
-
 func padEntry(index []byte, offset *int, size int) {
 	var padLen int
 	if (8 - (size % 8)) != 0 {
@@ -91,7 +89,6 @@ func padEntry(index []byte, offset *int, size int) {
 
 	*offset += padLen
 }
-
 
 func getBytes(path string) []byte {
 	data, err := ioutil.ReadFile(path)
@@ -113,7 +110,7 @@ func ParseGitIndex(indexFile string) (Header, []Entry, error) {
 
 	e := binary.Read(bytes.NewBuffer(index), binary.BigEndian, &header)
 	if e != nil {
-		return nil, nil, e
+		return Header{}, nil, e
 	}
 	h := convertToHeader(header)
 

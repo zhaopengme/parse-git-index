@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	parse_git_index "github.com/zhaopengme/parse-git-index"
 	"log"
 	"path/filepath"
@@ -12,7 +13,7 @@ func main() {
 	if e != nil {
 		log.Fatal(e)
 	}
-	println(header)
-	println(entries)
+	fmt.Println(header)
+	fmt.Println(entries)
 
 }
