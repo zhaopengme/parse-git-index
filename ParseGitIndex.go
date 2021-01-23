@@ -101,7 +101,7 @@ func getBytes(path string) []byte {
 	return data
 }
 
-func ParseGitIndex(indexFile string) (*Header, *[]Entry, error) {
+func ParseGitIndex(indexFile string) (Header, []Entry, error) {
 	var headerSize = 12
 	var entrySize = 62
 
@@ -134,5 +134,5 @@ func ParseGitIndex(indexFile string) (*Header, *[]Entry, error) {
 			entries = append(entries, en)
 		}
 	}
-	return &h, &entries, nil
+	return h, entries, nil
 }
